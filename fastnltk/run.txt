@@ -1,0 +1,12 @@
+.\fastnltk\Scripts\activate
+
+uvicorn main:app --reload
+
+ssh -i C:\Users\user\Downloads\Bruce-C.pem ubuntu@ec2-43-198-19-1.ap-east-1.compute.amazonaws.com
+
+#rejoin the session
+tmux attach , ctrl+B+D 
+
+curl -i -H "Content-Type: application/json" -X GET http://43.198.19.1/predict-review/?review=This%20is%20good  -d ""
+curl -X GET -H "content-Type:application/json" 'http://43.198.19.1/predict-review/?review=This%20is%20good'  -data "{\"id\": 10, \"data\": { \"review\": \"This is a good weather\" } }"
+curl -X POST 'http://43.198.19.1/predict-review/?review=This%20is%20good' -H 'accept: application/json'  -d ''
